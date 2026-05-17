@@ -27,7 +27,7 @@ public class Pedido {
     private String producto;
 
 
-    private int cantidad;
+    private Integer cantidad;
 
 
 }
