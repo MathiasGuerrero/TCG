@@ -6,14 +6,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.hateoas.RepresentationModel;
 
-import java.math.BigDecimal;
-
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class Producto extends RepresentationModel<Producto> {
+@AllArgsConstructor
+public class Usuario extends RepresentationModel<Usuario> {
+
     private Long id;
-    private BigDecimal precio;
-    private String nombre;
-    private Integer stock;
+    private String username;
+    private String correo;
 }

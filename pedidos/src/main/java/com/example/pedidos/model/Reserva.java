@@ -1,19 +1,17 @@
 package com.example.pedidos.model;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.hateoas.RepresentationModel;
 
-import java.math.BigDecimal;
-
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class Producto extends RepresentationModel<Producto> {
+@AllArgsConstructor
+public class Reserva extends RepresentationModel<Reserva> {
     private Long id;
-    private BigDecimal precio;
-    private String nombre;
-    private Integer stock;
+    private String producto;
+    private int cantidad;
+    private String tipoPago;
+    private int monto;
 }

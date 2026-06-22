@@ -1,33 +1,35 @@
 package com.example.pedidos.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.hateoas.RepresentationModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Pedido {
+public class Pedido extends RepresentationModel<Pedido> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Tiene que elegir un producto")
-    @Size(min = 2, max = 40)
-    private String producto;
+    private Long usuarioId;
+    private String usernameUsuario;
 
-
-    private Integer cantidad;
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<DetallePedido> detalles = new ArrayList<>();
 
 
 }
